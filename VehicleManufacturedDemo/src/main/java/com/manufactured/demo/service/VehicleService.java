@@ -86,10 +86,10 @@ public class VehicleService {
 	}
 	
 	public List<Vehicle> getVehicleByCompanyName(String companyName){
-		List<Vehicle> company = vehicleRepository.findByCompanyName(companyName);
+		List<Vehicle> vehicleByCompanyList = vehicleRepository.findByCompanyName(companyName);
 		List<Vehicle> vehicleList = (List<Vehicle>) vehicleRepository.findAll();
-		if(!company.isEmpty()) {
-			Vehicle key = company.get(0);
+		if(!vehicleByCompanyList.isEmpty()) {
+			Vehicle key = vehicleByCompanyList.get(0);
 			Comparator<Vehicle> c = new Comparator<Vehicle>() 
 	        { 
 	            public int compare(Vehicle v1, Vehicle v2) 
@@ -100,6 +100,6 @@ public class VehicleService {
 			int index = Collections.binarySearch(vehicleList, key , c);
 			System.out.println(index);
 		}
-		return vehicleList;
+		return vehicleByCompanyList;
 	}
 }
